@@ -1,23 +1,19 @@
 package CodingInterview;
 
-public class _03_DuplicationInArray {
+
+public class _03_01_DuplicationInArray {
 
     public static int getDuplication(int[] nums) {
-        if (nums == null || nums.length < 2)
+        if (!utils.checkArray(nums))
             return -1;
-        for (int i = 0; i < nums.length; ++i) {
-            if (nums[i] < 0)
-                return -1;
-        }
 
         for (int i = 0; i < nums.length; ++i) {
             while (nums[i] != i) {
-                int pos = nums[i];
-                if (nums[i] == nums[pos])
+                if (nums[i] == nums[nums[i]])
                     return nums[i];
                 int temp = nums[i];
-                nums[i] = nums[pos];
-                nums[pos] = temp;
+                nums[i] = nums[temp];
+                nums[temp] = temp;
             }
         }
 
